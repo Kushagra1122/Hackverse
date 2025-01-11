@@ -43,17 +43,16 @@ const Navbar = () => {
             Home
           </Link>
           <li className="hover:text-indigo-200 cursor-pointer">About</li>
-          <li className="hover:text-indigo-200 cursor-pointer">Contact</li>
           <li className="hover:text-indigo-200 cursor-pointer">
             {auth.user === null ? (
               <></>
             ) : (
               <>
                 {auth.user.role === "student" ? (
-                  <>Calendar</>
+                  <Link to={'/student'}>Dashboard</Link>
                 ) : (
                   <>
-                    <Link to={"/upload"}>Upload</Link>
+                    <Link to={"/professor"}>Dashboard</Link>
                    
                   </>
                 )}

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
-import { useAuth } from "../contexts/auth";
+import React, { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/auth";
+import { useNavigate } from "react-router-dom";
 
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -9,7 +10,12 @@ const Upload = () => {
   const [uploadedURL, setUploadedURL] = useState("");
   const [isUploading, setIsUploading] = useState(false);
   const [auth] = useAuth();
-
+  const navigate=useNavigate()
+  useEffect(() => {
+    if (auth?.user?.role !== "professor") {
+      navigate("/");
+    }
+  });
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     setSelectedFile(file);
@@ -67,7 +73,7 @@ const Upload = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-teal-400">
       <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
         <h1 className="text-2xl font-bold text-center text-indigo-600 mb-6">
           Upload Your PDF
@@ -157,7 +163,6 @@ const Upload = () => {
                 View PDF
               </a>
               {/* Download Link */}
-             
             </div>
           </div>
         )}

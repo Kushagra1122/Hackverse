@@ -5,9 +5,11 @@ import Navbar from "./components/Navbar";
 import LandingPage from "./pages/LandingPage";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Calendar from  "./pages/Calender"
-import ClassListPage from "./pages/ClassList"
-
+import Calendar from "./pages/Student/Calender";
+import ClassListPage from "./pages/Student/ClassList";
+import Upload from "./pages/Professor/Upload";
+import StudentDashboard from "./pages/Student/StudentDashboard";
+import ProfessorDashboard from "./pages/Professor/ProfessorDashboard";
 function App() {
   return (
     <>
@@ -20,9 +22,10 @@ function App() {
           <Route exact path="/" element={<LandingPage />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/signup" element={<Signup />} />
-            <Route exact path="/Calendar" element={<Calendar />} />
-            <Route path="/class-list" element={<ClassListPage />} />
-
+          <Route exact path="/calendar" element={<Calendar />} />
+          <Route exact path="/class-list" element={<ClassListPage />} />
+          <Route exact path="/student" element={<StudentDashboard />} />
+          <Route exact path="/professor" element={<ProfessorDashboard />} />
           <Route exact path="/upload" element={<Upload />} />
         </Routes>
 

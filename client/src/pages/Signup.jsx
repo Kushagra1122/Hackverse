@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import { useAuth } from "../contexts/auth";
 const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("student"); // Default role is 'user'
   const navigate = useNavigate();
+   const [auth, setAuth] = useAuth();
+   useEffect(() => {
+     if (auth?.user !== null) {
+       navigate("/");
+     }
+   });
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(`http://localhost:8000/api/auth/register`, {
@@ -123,7 +130,6 @@ const SignUp = () => {
             Sign Up
           </button>
         </form>
-
         {/* Login Link */}
         <p className="text-center text-gray-600 mt-6">
           Already have an account?{" "}
