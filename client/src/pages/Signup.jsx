@@ -5,6 +5,7 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [Course, setCourse] = useState("");
   const [role, setRole] = useState("student"); // Default role is 'user'
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
@@ -18,7 +19,8 @@ const SignUp = () => {
         name,
         email,
         password,
-        role, // Include role in the request body
+        role,
+        Course, // Include role in the request body
       }),
     });
         console.log(response);
@@ -113,8 +115,26 @@ const SignUp = () => {
               <option value="student">student</option>
               <option value="professor">professor</option>
             </select>
-          </div>
 
+          </div>
+        {
+          role==="professor"?<><div className="mb-4">
+          <label
+            htmlFor="Course"
+            className="block text-gray-700 font-medium mb-2"
+          >
+            Course
+          </label>
+          <input
+            type="text"
+            id="Course"
+            value={Course}
+            onChange={(e) => setCourse(e.target.value)}
+            placeholder="Course"
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          />
+        </div></>:<></>
+        }
           {/* Submit Button */}
           <button
             type="submit"

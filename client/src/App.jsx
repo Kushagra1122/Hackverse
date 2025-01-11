@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Calendar from  "./pages/Calender"
 import ClassListPage from "./pages/ClassList"
+import Upload from './pages/Upload'
 
 function App() {
   return (
