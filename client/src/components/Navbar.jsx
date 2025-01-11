@@ -19,7 +19,6 @@ const Navbar = () => {
        localStorage.removeItem("auth");
        navigate("/login");
      };
-     console.log(auth)
   return (
     <div>
       <nav className="bg-indigo-600 text-white py-4 px-6 flex justify-between items-center">
@@ -49,7 +48,9 @@ const Navbar = () => {
             {auth.user === null ? (
               <></>
             ) : (
-              <>{auth.user.role === "student" ? <>Calendar</> : <Link to={"/upload"}>Upload</Link>}</>
+              <>{auth.user.role === "student" ? <Link to={"/Calendar"} className="hover:text-indigo-200 cursor-pointer">
+              Calendar
+            </Link> : <>Upload</>}</>
             )}
           </li>
         </ul>

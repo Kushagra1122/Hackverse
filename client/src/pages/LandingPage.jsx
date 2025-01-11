@@ -20,7 +20,6 @@ const LandingPage = () => {
           </button>
         </div>
       </section>
-
      
 
       {/* Testimonials Section */}
