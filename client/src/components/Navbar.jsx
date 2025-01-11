@@ -19,6 +19,7 @@ const Navbar = () => {
        localStorage.removeItem("auth");
        navigate("/login");
      };
+     console.log(auth)
   return (
     <div>
       <nav className="bg-indigo-600 text-white py-4 px-6 flex justify-between items-center">
@@ -48,7 +49,7 @@ const Navbar = () => {
             {auth.user === null ? (
               <></>
             ) : (
-              <>{auth.user.role === "student" ? <>Calendar</> : <>Upload</>}</>
+              <>{auth.user.role === "student" ? <>Calendar</> : <Link to={"/upload"}>Upload</Link>}</>
             )}
           </li>
         </ul>
