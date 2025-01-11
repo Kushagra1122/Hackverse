@@ -48,9 +48,16 @@ const Navbar = () => {
             {auth.user === null ? (
               <></>
             ) : (
-              <>{auth.user.role === "student" ? <Link to={"/Calendar"} className="hover:text-indigo-200 cursor-pointer">
-              Calendar
-            </Link> : <>Upload</>}</>
+              <>
+                {auth.user.role === "student" ? (
+                  <>Calendar</>
+                ) : (
+                  <>
+                    <Link to={"/upload"}>Upload</Link>
+                   
+                  </>
+                )}
+              </>
             )}
           </li>
         </ul>
