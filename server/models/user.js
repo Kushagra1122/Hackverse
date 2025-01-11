@@ -5,7 +5,13 @@ const userSchema = new mongoose.Schema({
     name: { type: String, required: true },
     email: { type: String, unique: true, required: true },
     password: { type: String, required: true },
-    role: { type: String, enum: ['professor', 'student'], required: true }
+    role: { type: String, enum: ['professor', 'student'], required: true },
+    course: {
+        type: String,
+        required: function () {
+            return this.role === 'professor'; 
+        },
+    },
 });
 
 

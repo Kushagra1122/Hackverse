@@ -6,8 +6,8 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [Course, setCourse] = useState("");
-  const [role, setRole] = useState("student"); // Default role is 'user'
+  const [course, setCourse] = useState("");
+  const [role, setRole] = useState("student"); 
   const navigate = useNavigate();
    const [auth, setAuth] = useAuth();
    useEffect(() => {
@@ -27,7 +27,8 @@ const SignUp = () => {
         email,
         password,
         role,
-        Course, // Include role in the request body
+        ...(role === "professor" && { course }),
+       
       }),
     });
         console.log(response);
@@ -135,7 +136,7 @@ const SignUp = () => {
           <input
             type="text"
             id="Course"
-            value={Course}
+            value={course}
             onChange={(e) => setCourse(e.target.value)}
             placeholder="Course"
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"

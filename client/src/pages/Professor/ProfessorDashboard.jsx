@@ -20,7 +20,7 @@ const ProfessorDashboard = () => {
       title: "Invite",
       description: "Send invites to students or collaborators.",
       icon: "✉️",
-      action: () => alert("Sending invites..."),
+      action: () => navigate("/invite"),
     },
     {
       title: "My Profile",
