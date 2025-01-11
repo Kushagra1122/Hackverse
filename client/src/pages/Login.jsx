@@ -1,7 +1,43 @@
-import React from "react";
-import { Link } from "react-router-dom";
-
+import React, { useState } from "react";
+import { Link,useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useAuth } from "../contexts/auth";
 const Login = () => {
+     const [email, setemail] = useState("");
+     const [password, setpassword] = useState("");
+     const [auth,setAuth]=useAuth()
+     const navigate = useNavigate();
+     const handleSubmit = async (e) => {
+       e.preventDefault();
+       const response = await fetch(`http://localhost:8000/api/auth/login`, {
+         method: "POST",
+         headers: {
+           "Content-Type": "application/json",
+         },
+         body: JSON.stringify({
+           email,
+           password,
+         }),
+       });
+       console.log(response);
+       const res = await response.json();
+         console.log(res);
+         if (response.ok) {
+           setAuth({
+             ...auth,
+             user: res.user,
+             token: res.token,
+           });
+           localStorage.setItem("auth", JSON.stringify({ token: res.token }));
+           toast.success("login successfull");
+           navigate("/");
+
+           setemail("");
+           setpassword("");
+         } else {
+           toast.error(res.message);
+         }
+     };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white shadow-xl rounded-lg p-8 max-w-md w-full">
@@ -11,7 +47,7 @@ const Login = () => {
         <p className="text-center text-gray-600 mb-6">
           Log in to your account to continue learning.
         </p>
-        <form>
+        <form onSubmit={handleSubmit}>
           {/* Email Field */}
           <div className="mb-6">
             <label
@@ -23,6 +59,8 @@ const Login = () => {
             <input
               type="email"
               id="email"
+              value={email}
+              onChange={(e) => setemail(e.target.value)}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
@@ -39,6 +77,8 @@ const Login = () => {
             <input
               type="password"
               id="password"
+              value={password}
+              onChange={(e) => setpassword(e.target.value)}
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400"
             />
@@ -46,7 +86,6 @@ const Login = () => {
 
           {/* Remember Me & Forgot Password */}
           <div className="flex items-center justify-between mb-6">
-          
             <a
               href="#"
               className="text-indigo-600 hover:underline text-sm font-medium"
@@ -63,8 +102,6 @@ const Login = () => {
             Login
           </button>
         </form>
-
-    
 
         {/* Signup Link */}
         <p className="text-center text-gray-600 mt-6">
