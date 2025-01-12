@@ -13,7 +13,7 @@ let courseTitle
   const func = async () => {
     if (auth?.token !== null) {
       const response = await fetch(
-        `http://localhost:8000/api/auth/getStudents`,
+        `http://localhost:3000/api/auth/getStudents`,
         {
           method: "GET",
           headers: {
@@ -33,7 +33,7 @@ let courseTitle
   // Fetch all invites
   const func2 = async () => {
     if (auth?.token !== null) {
-      const response = await fetch(`http://localhost:8000/api/invite/getall`, {
+      const response = await fetch(`http://localhost:3000/api/invite/getall`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${auth?.token}`,
@@ -70,7 +70,7 @@ let courseTitle
     try {
       // Fetch the course details using the course ID
       const courseResponse = await fetch(
-        `http://localhost:8000/api/course/getCourse/${courseId}`,
+        `http://localhost:3000/api/course/getCourse/${courseId}`,
         {
           method: "GET",
           headers: {
@@ -91,7 +91,7 @@ let courseTitle
 
       // Send the invite with the course title
       const inviteResponse = await fetch(
-        `http://localhost:8000/api/invite/create/${studentId}`,
+        `http://localhost:3000/api/invite/create/${studentId}`,
         {
           method: "POST",
           headers: {

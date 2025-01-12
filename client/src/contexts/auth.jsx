@@ -17,7 +17,7 @@ const AuthProvider = ({ children }) => {
             if (parseData.token !== null) {
 console.log(parseData)
                 const response = await fetch(
-                  "http://localhost:8000/api/auth/session",
+                  "http://localhost:3000/api/auth/session",
                   {
                     method: "GET",
                     headers: {

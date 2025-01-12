@@ -11,7 +11,7 @@ const Invitation = () => {
     if (auth?.user?._id !== undefined) {
       try {
         const response = await fetch(
-          `http://localhost:8000/api/invite/get/${auth?.user?._id}`,
+          `http://localhost:3000/api/invite/get/${auth?.user?._id}`,
           {
             method: "GET", // Ensure the correct method is used
             headers: {
@@ -34,7 +34,7 @@ const Invitation = () => {
   const handleAccept = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/invite/accept/${id}`,
+        `http://localhost:3000/api/invite/accept/${id}`,
         {
           method: "PATCH",
           headers: {
@@ -58,7 +58,7 @@ const Invitation = () => {
   const handleReject = async (id) => {
     try {
       const response = await fetch(
-        `http://localhost:8000/api/invite/reject/${id}`,
+        `http://localhost:3000/api/invite/reject/${id}`,
         {
           method: "PATCH",
           headers: {

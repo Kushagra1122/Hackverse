@@ -49,7 +49,7 @@ const Upload = () => {
       formData.append("profId", auth?.user?._id);
 
       // Send the file to the backend
-      const response = await fetch("http://localhost:8000/api/prof/upload", {
+      const response = await fetch("http://localhost:3000/api/prof/upload", {
         method: "POST",
         headers: {
           Authorization: auth.token,

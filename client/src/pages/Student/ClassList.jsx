@@ -13,7 +13,7 @@ const ClassListPage = () => {
       return;
     }
 
-    fetch(`http://localhost:8000/api/classes?date=${date}`)
+    fetch(`http://localhost:3000/api/classes?date=${date}`)
       .then((res) => res.json())
       .then((data) => {setClasses(data);console.log(data); })
       .catch((err) => {

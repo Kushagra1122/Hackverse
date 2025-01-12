@@ -7,24 +7,22 @@ const CalendarPage = () => {
   const [classDates, setClassDates] = useState([]);
   const navigate = useNavigate();
 
-  
   const handleDateClick = (date) => {
-    const formattedDate = date.toISOString().split("T")[0];
+    const formattedDate = date.toISOString().split("T")[0]; // Format the date as YYYY-MM-DD
     
+    // Navigate to a page with the selected date or open a modal
+    navigate(`/class-details/${formattedDate}`); // Adjust the path as needed
   };
 
- 
-
   return (
-    <div className="flex pt-10 justify-center min-h-screen bg-gradient-to-r from-blue-500 to-teal-400  ">
-      <div className="p-8 w-full max-w-lg ">
+    <div className="flex pt-10 justify-center min-h-screen bg-gradient-to-r from-blue-500 to-teal-400">
+      <div className="p-8 w-full max-w-lg">
         <h2 className="text-4xl font-semibold text-white mb-8 text-center">
           Select a Date
         </h2>
         <div className="flex justify-center">
           <Calendar
             onClickDay={handleDateClick}
-           
             className="react-calendar rounded-xl shadow-lg w-full h-auto"
             style={{ width: "100%", height: "auto", transform: "scale(1.1)" }} // Make the calendar a little bigger
           />
