@@ -9,7 +9,7 @@ const StudentDashboard = () => {
       title: "Queries",
       description: "Submit or view your queries.",
       icon: "❓",
-      action: () => alert("Navigating to Queries..."),
+      action: () => navigate("/invitation"),
     },
     {
       title: "Calendar",
@@ -21,7 +21,7 @@ const StudentDashboard = () => {
       title: "Invitation",
       description: "Check for event or class invitations.",
       icon: "✉️",
-      action: () => alert("Opening Invitations..."),
+      action: () => navigate("/invitation"),
     },
     {
       title: "My Profile",

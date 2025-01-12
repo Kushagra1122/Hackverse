@@ -11,6 +11,7 @@ const authMiddleware = (req, res, next) => {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     req.user = decoded; // Attach the decoded user info to the request
+  
     next();
   } catch (err) {
     res.status(401).json({ error: 'Invalid or expired token' });
@@ -20,6 +21,7 @@ const prof = async (req, res, next) => {
   try {
 
     const user = await User.findById(req.user.userId);
+    
     if (user.role !== 'professor') {
       return res.status(400).json({
 

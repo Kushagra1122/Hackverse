@@ -11,6 +11,7 @@ import Upload from "./pages/Professor/Upload";
 import StudentDashboard from "./pages/Student/StudentDashboard";
 import ProfessorDashboard from "./pages/Professor/ProfessorDashboard";
 import Invite from "./pages/Professor/Invite";
+import Invitation from "./pages/Student/Invitation";
 function App() {
   return (
     <>
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/student" element={<StudentDashboard />} />
           <Route exact path="/professor" element={<ProfessorDashboard />} />
           <Route exact path="/invite" element={<Invite />} />
+          <Route exact path="/invitation" element={<Invitation />} />
           <Route exact path="/upload" element={<Upload />} />
         </Routes>
 

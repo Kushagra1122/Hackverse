@@ -1,5 +1,5 @@
 const User = require("../models/User"); // Assuming User model is where user data is stored
-const Course = require("../models/courses"); // Import the Course model
+const Course = require("../models/course"); // Import the Course model
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -71,7 +71,7 @@ exports.login = async (req, res) => {
     res.status(200).json({
       message: "Login successful",
       token,
-      user: { name: user.name, email: user.email, role: user.role },
+      user: { name: user.name, email: user.email, role: user.role, course: user.course },
     });
   } catch (error) {
     console.error(error);
@@ -86,12 +86,16 @@ exports.session = async (req, res) => {
       return res.status(404).json({ message: "User not found" });
     }
 
+  
+
     return res.status(200).json({
       user: {
         _id: user._id,
         name: user.name,
         email: user.email,
         role: user.role,
+        course: user.course
+
       },
     });
   } catch (error) {
@@ -103,7 +107,6 @@ exports.getStudents = async (req, res) => {
   try {
     // Find all users with the role 'student'
     const students = await User.find({ role: "student" });
-    console.log(students)
     // If no students are found
     if (students.length === 0) {
       return res.status(404).json({ message: "No students found" });
