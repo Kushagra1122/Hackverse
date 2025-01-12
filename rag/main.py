@@ -12,7 +12,7 @@ model = SentenceTransformer('all-MiniLM-L6-v2')
 app = FastAPI()
 
 from dotenv import load_dotenv
-from dotenv import load_dotenv
+
 import os
 
 load_dotenv()
